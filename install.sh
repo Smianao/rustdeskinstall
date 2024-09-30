@@ -173,19 +173,19 @@ cd /opt/rustdesk/ || exit 1
 
 
 #Download latest version of Rustdesk
-RDLATEST=$(curl https://api.github.com/repos/rustdesk/rustdesk-server/releases/latest -s | grep "tag_name" | awk -F'"' '{print $4}')
+RDLATEST=$(curl https://api.kkgithub.com/repos/rustdesk/rustdesk-server/releases/latest -s | grep "tag_name" | awk -F'"' '{print $4}')
 
 echo "Installing Rustdesk Server"
 if [ "${ARCH}" = "x86_64" ] ; then
-wget "https://github.com/rustdesk/rustdesk-server/releases/download/${RDLATEST}/rustdesk-server-linux-amd64.zip"
+wget "https://kkgithub.com/rustdesk/rustdesk-server/releases/download/${RDLATEST}/rustdesk-server-linux-amd64.zip"
 unzip rustdesk-server-linux-amd64.zip
 mv amd64/* /opt/rustdesk/
 elif [ "${ARCH}" = "armv7l" ] ; then
-wget "https://github.com/rustdesk/rustdesk-server/releases/download/${RDLATEST}/rustdesk-server-linux-armv7.zip"
+wget "https://kkgithub.com/rustdesk/rustdesk-server/releases/download/${RDLATEST}/rustdesk-server-linux-armv7.zip"
 unzip rustdesk-server-linux-armv7.zip
 mv armv7/* /opt/rustdesk/
 elif [ "${ARCH}" = "aarch64" ] ; then
-wget "https://github.com/rustdesk/rustdesk-server/releases/download/${RDLATEST}/rustdesk-server-linux-arm64v8.zip"
+wget "https://kkgithub.com/rustdesk/rustdesk-server/releases/download/${RDLATEST}/rustdesk-server-linux-arm64v8.zip"
 unzip rustdesk-server-linux-arm64v8.zip
 mv arm64v8/* /opt/rustdesk/
 fi
@@ -297,14 +297,14 @@ function setuphttp () {
     fi
     sudo chown "${uname}" -R /opt/gohttp
     cd /opt/gohttp
-    GOHTTPLATEST=$(curl https://api.github.com/repos/codeskyblue/gohttpserver/releases/latest -s | grep "tag_name"| awk '{print substr($2, 2, length($2)-3) }')
+    GOHTTPLATEST=$(curl https://api.kkgithub.com/repos/codeskyblue/gohttpserver/releases/latest -s | grep "tag_name"| awk '{print substr($2, 2, length($2)-3) }')
 
     echo "Installing Go HTTP Server"
     if [ "${ARCH}" = "x86_64" ] ; then
-    wget "https://github.com/codeskyblue/gohttpserver/releases/download/${GOHTTPLATEST}/gohttpserver_${GOHTTPLATEST}_linux_amd64.tar.gz"
+    wget "https://kkgithub.com/codeskyblue/gohttpserver/releases/download/${GOHTTPLATEST}/gohttpserver_${GOHTTPLATEST}_linux_amd64.tar.gz"
     tar -xf  gohttpserver_${GOHTTPLATEST}_linux_amd64.tar.gz 
     elif [ "${ARCH}" =  "aarch64" ] ; then
-    wget "https://github.com/codeskyblue/gohttpserver/releases/download/${GOHTTPLATEST}/gohttpserver_${GOHTTPLATEST}_linux_arm64.tar.gz"
+    wget "https://kkgithub.com/codeskyblue/gohttpserver/releases/download/${GOHTTPLATEST}/gohttpserver_${GOHTTPLATEST}_linux_arm64.tar.gz"
     tar -xf  gohttpserver_${GOHTTPLATEST}_linux_arm64.tar.gz
     elif [ "${ARCH}" = "armv7l" ] ; then
     echo "Go HTTP Server not supported on 32bit ARM devices"
